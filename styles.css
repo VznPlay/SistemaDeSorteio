@@ -1,0 +1,252 @@
+body {
+    background-color: #202020;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px; /* Aumenta a largura do container */
+    text-align: center;
+    border: 2px solid #0080ff;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #333333;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #0080ff;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    background-color: #444444;
+    color: #fff;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    color: #fff;
+}
+
+#addButton {
+    background-color: #0080ff;
+}
+
+.draw-button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    background-color: #28a745;
+    border-radius: 4px;
+}
+
+.list-container {
+    margin-top: 20px;
+    border-top: 1px solid #00bfff;
+    padding-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #cccccc;
+    margin-bottom: 10px;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #444444;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.countdown-display {
+    font-size: 26px; /* Aumenta o tamanho da fonte */
+    color: #28a745; /* Cor verde */
+    font-family: 'Arial Black', sans-serif;
+    margin-top: 20px;
+}
+
+.winner-display {
+    font-size: 18px; /* Aumenta o tamanho */
+    font-weight: bold; /* Negrito */
+    color: #ffffff; /* Cor verde */
+    padding: 15px;
+    background-color: #555555;
+    border: 2px solid #00ff3c;
+    border-radius: 8px;
+}
+
+/* Classe personalizada para o texto "Vencedor" */
+.ven-tam {
+    color: #00f83a;
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.reset-button {
+    display: none;
+    background-color: #ff0000;
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+}
+
+/* Estilo do confete */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffc107;
+    animation: fall 4s linear infinite; /* Aumenta a duração da queda */
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(50vh) translateX(-30px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(100vh) translateX(30px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* CODIGO ABAIXO E DOS OUTROS SITES*/
+.catalogo {
+    display: flex;
+    gap: 7px;
+}
+
+.sug{
+    margin-right: 8px;
+}
+
+section {
+    background-color:rgb(42, 99, 45); /* Azul forte */
+    padding: 5px;
+    display: flex;
+    border: 2px solid #333; /* Borda para destaque */
+    color: #fff; /* Cor do texto para contraste */
+    border-radius: 7px;
+}
+
+section a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.icon {
+    width: 35px;
+    height: 35px;
+    margin: 2px;
+}
+#pac-man, #macs{
+margin-left: 25px;
+margin-right: 25px;
+}
+a{
+    cursor: pointer;
+}
+/* CODIGO ACIMA E DOS AQUADRADOS DE OUTROS APPS*/
+
+
+/* Media query para telas menores */
+@media (max-width: 600px) {
+span{
+    font-size: 14px;
+}
+.list-header span{
+font-size: 13px;
+margin-left: 10px;
+margin-right: 10px;
+}
+.delete-button{
+    font-size: 11px;
+}
+.ven-tam{
+    font-size: 22px;
+}
+
+
+
+.catalogo {
+    display: flex;
+    gap: 2px;
+}
+
+.sug{
+margin-left: -14px;
+margin-right: 0px;
+}
+
+section {
+    background-color:rgb(42, 99, 45); /* Azul forte */
+    padding: 4px;
+    display: flex;
+    border: 2px solid #333; /* Borda para destaque */
+    color: #fff; /* Cor do texto para contraste */
+    border-radius: 7px;
+}
+
+section a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 10px;
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+
+}
+#pac-man, #macs{
+margin-left: 15px;
+}
+
+
+}

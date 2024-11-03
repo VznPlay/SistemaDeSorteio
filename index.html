@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo-VznPlay</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> 
+
+    <div class="container">
+
+        <div class="catalogo">
+            <section class="sug">
+                <a href="#" target="_blank">
+                    <img src="sugestao.png" alt="Ícone Sugestão" class="icon">
+                    SUGESTÕES
+                </a>
+            </section>
+            <section>
+                <a href="#" target="_blank">
+                    <img src="facilitador.png" alt="Ícone Facilitador" class="icon">
+                    Facilitador
+                </a>
+            </section>
+            <section>
+                <a href="#" target="_blank">
+                    <img src="gerenciador.png" alt="Ícone Gerenciador" class="icon">
+                    Gerenciador
+                </a>
+            </section>
+            <section>
+                <a href="#" target="_blank">
+                    <img id="macs" src="org_macs_apps.png" alt="Ícone Organização" class="icon"> <br>
+                    Org. Macs
+                </a>
+            </section>
+            <section>
+                <a href="#" target="_blank">
+                    <img id="pac-man" src="papa_teste.png" alt="Ícone Papa Teste" class="icon"> <br>
+                    Papa teste
+                </a>
+            </section>
+        </div>
+
+
+
+        <h1>Sistema de sorteio - VznPlay</h1>
+
+        <!-- Campo 1: Caixa de texto para adicionar nome -->
+        <div class="input-group">
+            <input type="text" id="nameInput" placeholder="Digite O Nome E Boa Sorte..." maxlength="25">
+            <button id="addButton">Adicionar</button>
+        </div>
+
+        <!-- Campo 3: Botão de sortear -->
+        <button id="drawButton" class="draw-button">Sortear</button>
+
+        <!-- Campo 4: Lista de nomes e números -->
+        <div class="list-container">
+            <div class="list-header">
+                <span>Nome</span>
+                <span>Número</span>
+                <span>Deletar</span>
+            </div>
+            <div id="nameList"></div>
+        </div>
+
+        <!-- Campo 5: Contagem regressiva e nome sorteado -->
+        <div id="countdownDisplay" class="countdown-display"></div>
+        <div id="winnerDisplay" class="winner-display"></div>
+
+        <!-- Botão para resetar sistema -->
+        <button id="resetButton" class="reset-button" style="display: none;">Resetar Sistema</button>
+    </div>
+
+    <script src="script.js" ></script>
+</body>
+</html>
