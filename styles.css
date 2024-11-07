@@ -141,6 +141,85 @@ button {
     opacity: 0.8;
 }
 
+
+
+/* Estilo para o campo de pesquisa */
+.search-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-input {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #0080ff;
+    border-radius: 4px;
+    outline: none;
+    background-color: #444444;
+    color: #fff;
+}
+
+.search-button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #0080ff;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #0559add3;
+}
+
+/* Estilo para os resultados da pesquisa */
+.search-results {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #555555;
+    border: 2px solid #0080ff;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+}
+
+
+/* Estilo para os botões de confirmação */
+.confirm-box button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Botão "Sim" */
+#confirmYes, #resetConfirmYes {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+/* Botão "Não" */
+#confirmNo, #resetConfirmNo {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+}
+
+/* Mudança de cor ao passar o mouse */
+.confirm-box button:hover {
+    opacity: 0.8;
+}
+
+
+
+
 @keyframes fall {
     0% {
         transform: translateY(0) translateX(0) rotate(0deg);
