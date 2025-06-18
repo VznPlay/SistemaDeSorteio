@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupo-VznPlay</title>
+    <title>Sorteador - Grupo VznPlay</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon-32x32.png" type="image/x-icon">
 
-    <!-- Código do Google Analytics -->
+    <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0a1a63;">
+<link rel="apple-touch-icon" href="/logo-01.png">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Flaticon Uicons (Solid Rounded) -->
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<!-- Código do Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-90CTWCNCN5"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -27,38 +35,41 @@
             <section class="sug">
                 <a href="https://facilitaplay.vercel.app" target="_blank">
                     <img src="facilitador.png" alt="Ícone Sugestão" class="icon">
-                    FACILITADOR
-                </a>
+                    FACILITADOR</a>
             </section>
             <section>
                 <a href="https://planilhadefaturamneto.vercel.app" target="_blank">
-                    <img src="fatura.png" alt="Ícone Facilitador" class="icon">
+                    <img id="fatu" src="faturamento.png" alt="Ícone Facilitador" class="icon">
                     Faturamento
                 </a>
             </section>
             <section>
                 <a href="https://gerenciador-seven.vercel.app" target="_blank">
-                    <img src="gerenciador.png" alt="Ícone Gerenciador" class="icon">
-                    Gerenciador
+                    <img src="anuidade.png" alt="Ícone Gerenciador" class="icon">
+                    Anuidade
                 </a>
             </section>
             <section>
                 <a href="https://macs-clientes.vercel.app" target="_blank">
-                    <img id="macs" src="org_macs_apps.png" alt="Ícone Organização" class="icon"> <br>
+                    <img id="macs" src="macs.png" alt="Ícone Organização" class="icon"> <br>
                     Org. Macs
                 </a>
             </section>
             <section>
-                <a href="https://t.me/antipapatesteiptvbot" target="_blank">
-                    <img id="pac-man" src="papa_teste.png" alt="Ícone Papa Teste" class="icon"> <br>
-                    Papa teste
+                <a href="https://indicacoes-nu.vercel.app" target="_blank">
+                    <img id="pac-man" src="bonus.png" alt="Ícone Papa Teste" class="icon fotos"> <br>
+                    Indicação
+                </a>
+            </section>
+            <section>
+                <a href="https://calculo-ir.vercel.app" target="_blank">
+                    <img id="pac-man" src="imposto.png" alt="Ícone Papa Teste" class="icon foto"> <br>
+                    Simulador
                 </a>
             </section>
         </div>
 
-
-
-        <h1>Sistema de sorteio - VznPlay</h1>
+        <h1>Sistema De Sorteio - VznPlay</h1>
 
         <!-- Campo 1: Caixa de texto para adicionar nome -->
         <div class="input-group">
@@ -66,14 +77,26 @@
             <button id="addButton">Adicionar</button>
         </div>
 
+
+    <!-- Faixa de texto rolante -->
+    <div class="banner">
+        <div class="marquee">
+            <div class="marquee-container">
+                <span class="marquee-text">🚀 Automatize Suas Vendas Com O WA Sender Clique Em <a href="https://wasenderplus.vercel.app" target="_blank">SAIBA MAIS!</a></span> <span class="marquee-text">🚀 Multiplique Seus Ganhos E Transforme Seu WhatsApp Em Uma Máquina De Vendas! <a href="https://wasenderplus.vercel.app" target="_blank">CLIQUE AQUI</a></span>
+                <!-- Duplicamos os textos para criar o loop perfeito -->
+                <span class="marquee-text">🚀 Automatize Suas Vendas Com O WA Sender Clique Em <a href="https://wasenderplus.vercel.app" target="_blank">SAIBA MAIS!</a></span> <span class="marquee-text">🚀 Multiplique Seus Ganhos E Transforme Seu WhatsApp Em Uma Máquina De Vendas! <a href="https://wasenderplus.vercel.app" target="_blank">CLIQUE AQUI</a></span>
+            </div>
+        </div>
+    </div>
+
+
         <!-- Campo 3: Botão de sortear -->
         <button id="drawButton" class="draw-button">Sortear</button>
 
         <!-- Campo de pesquisa -->
-<div class="search-container">
-    <input type="text" id="searchInput" placeholder="Pesquisar nome..." class="search-input">
-    <button id="searchButton" class="search-button">Pesquisar</button>
-</div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Pesquisar nome..." class="search-input">
+        </div>
 
 
         <!-- Campo 4: Lista de nomes e números -->
@@ -95,5 +118,12 @@
     </div>
 
     <script src="script.js" ></script>
+
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js');
+  }
+</script>
+
 </body>
 </html>

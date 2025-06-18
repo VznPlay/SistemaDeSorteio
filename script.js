@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const countdownDisplay = document.getElementById("countdownDisplay");
     const winnerDisplay = document.getElementById("winnerDisplay");
     const resetButton = document.getElementById("resetButton");
-    const searchInput = document.getElementById("searchInput"); // Campo de pesquisa
-    const searchButton = document.getElementById("searchButton"); // Botão de pesquisa
+    const searchInput = document.getElementById("searchInput");
 
     const confirmBox = document.createElement("div");
     confirmBox.classList.add("confirm-box");
@@ -40,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let resetButtonState = JSON.parse(localStorage.getItem("resetButtonState")) || false;
     let buttonsDisabledState = JSON.parse(localStorage.getItem("buttonsDisabledState")) || false;
 
-    // Função para renderizar a lista de participantes
     function renderList(filteredParticipants = participants) {
         nameList.innerHTML = "";
         filteredParticipants.forEach((p, index) => {
@@ -56,27 +54,23 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("participants", JSON.stringify(participants));
     }
 
-    // Função para desabilitar todos os botões
     function disableButtons() {
         addButton.disabled = true;
         drawButton.disabled = true;
         nameInput.disabled = true;
-        // Desabilita também os botões de excluir
         const deleteButtons = document.querySelectorAll(".delete-button");
         deleteButtons.forEach(button => button.disabled = true);
     }
 
-    // Função para habilitar todos os botões
     function enableButtons() {
         addButton.disabled = false;
         drawButton.disabled = false;
         nameInput.disabled = false;
-        // Habilita os botões de excluir
         const deleteButtons = document.querySelectorAll(".delete-button");
         deleteButtons.forEach(button => button.disabled = false);
     }
 
-    addButton.addEventListener("click", () => {
+    function addParticipant() {
         if (drawInProgress) return;
         const name = nameInput.value.trim();
         if (name && participants.length < 999) {
@@ -85,10 +79,20 @@ document.addEventListener("DOMContentLoaded", function () {
             renderList();
             nameInput.value = "";
         }
+    }
+
+    // Evento para adicionar com o botão
+    addButton.addEventListener("click", addParticipant);
+
+    // Evento para adicionar com Enter
+    nameInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            addParticipant();
+        }
     });
 
     window.deleteParticipant = (index) => {
-        if (drawInProgress) return;  // Evitar deletar durante o sorteio
+        if (drawInProgress) return;
         participants.splice(index, 1);
         renderList();
     };
@@ -112,9 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
         countdownDisplay.innerText = `Sorteando em 10...`;
         localStorage.setItem("countdownDisplay", countdownDisplay.innerText);
 
-        // Desabilitar os botões durante o sorteio
         disableButtons();
-        localStorage.setItem("buttonsDisabledState", true);  // Salvar o estado dos botões
+        localStorage.setItem("buttonsDisabledState", true);
 
         let countdown = 10;
         const countdownInterval = setInterval(() => {
@@ -125,12 +128,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 clearInterval(countdownInterval);
                 const winner = participants[Math.floor(Math.random() * participants.length)];
                 winnerDisplay.innerHTML = `<span class="ven-tam">Vencedor:</span> ${winner.name} - Número: ${winner.number}`;
-                localStorage.setItem("winnerDisplay", winnerDisplay.innerHTML); // Salvar o vencedor no localStorage
+                localStorage.setItem("winnerDisplay", winnerDisplay.innerHTML);
                 confettiEffect();
-                resetButton.style.display = "block"; // Exibe o botão de reset
-                localStorage.setItem("resetButtonState", true); // Salva o estado do botão reset
-                drawInProgress = false;  // Sorteio finalizado
-                // Não reabilitar os botões ainda
+                resetButton.style.display = "block";
+                localStorage.setItem("resetButtonState", true);
+                drawInProgress = false;
             }
         }, 1000);
     }
@@ -148,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     resetButton.addEventListener("click", () => {
-        resetConfirmBox.style.display = "block"; // Mostrar a caixa de confirmação para resetar
+        resetConfirmBox.style.display = "block";
     });
 
     resetConfirmYes.addEventListener("click", () => {
@@ -158,41 +160,37 @@ document.addEventListener("DOMContentLoaded", function () {
         winnerDisplay.innerText = "";
         resetButton.style.display = "none";
         localStorage.clear();
-
-        // Reabilitar os botões após o reset
         enableButtons();
-        localStorage.setItem("buttonsDisabledState", false); // Reseta o estado dos botões
-        localStorage.setItem("resetButtonState", false); // Reseta o estado do botão
-        resetConfirmBox.style.display = "none"; // Esconde a caixa de confirmação
+        localStorage.setItem("buttonsDisabledState", false);
+        localStorage.setItem("resetButtonState", false);
+        resetConfirmBox.style.display = "none";
     });
 
     resetConfirmNo.addEventListener("click", () => {
-        resetConfirmBox.style.display = "none"; // Esconde a caixa de confirmação
+        resetConfirmBox.style.display = "none";
     });
 
-    // Renderiza a lista inicial de participantes
+    // Pesquisa automática enquanto digita
+    searchInput.addEventListener("input", () => {
+        const searchQuery = searchInput.value.trim().toLowerCase();
+        const filteredParticipants = participants.filter(p => 
+            p.name.toLowerCase().includes(searchQuery)
+        );
+        renderList(filteredParticipants);
+    });
+
+    // Renderização inicial
     renderList();
     countdownDisplay.innerText = countdownState || "";
-    winnerDisplay.innerHTML = winnerState || ""; // Exibe o vencedor restaurado
+    winnerDisplay.innerHTML = winnerState || "";
 
-    // Manter o estado do botão de reset após o sorteio
     if (resetButtonState) {
         resetButton.style.display = "block";
     } else {
         resetButton.style.display = "none";
     }
 
-    // Aplicar o estado de desabilitação dos botões após o recarregamento da página
     if (buttonsDisabledState) {
         disableButtons();
     }
-
-    // Função de pesquisa
-    searchButton.addEventListener("click", () => {
-        const searchQuery = searchInput.value.trim().toLowerCase();
-        const filteredParticipants = participants.filter(p => 
-            p.name.toLowerCase().includes(searchQuery)
-        );
-        renderList(filteredParticipants); // Renderiza a lista filtrada
-    });
 });
